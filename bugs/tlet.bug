@@ -1,0 +1,27 @@
+model{
+  for (i in 1:n){
+    for (j in 1:p){
+      Y[i, j] ~ dbern(prob[i, j])
+      logit(prob[i, j]) <- alpha[j]*(theta[i] - delta[j] + gamma[i,d[j]])
+    }
+
+    theta[i] ~ dnorm(0.0, 1.0)
+
+    for (k in 1:n.t){
+      gamma[i, k] ~ dnorm(0.0, pr.gamma[k])
+    }
+    gamma[i, n.t + 1] <- 0.0
+  }
+
+  for (j in 1:p){
+    alpha[j] ~ dnorm(m.alpha, pr.alpha) I(0.0, )
+    delta[j] ~ dnorm(m.delta, pr.delta)
+  }
+  pr.alpha <- pow(s.alpha, -2)
+  pr.delta <- pow(s.delta, -2)
+
+  for (k in 1:n.t){
+    pr.gamma[k] ~ dgamma(a.sigsq.gamma, b.sigsq.gamma)
+    sigsq.gamma[k] <- 1.0/pr.gamma[k]
+  }
+}

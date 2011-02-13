@@ -1,0 +1,30 @@
+model{
+  for (i in 1:n){
+    for (j in 1:p){
+      Y[i, j] ~ dcat(prob[i, j, 1:K[j]])
+    }
+    theta[i] ~ dnorm(0.0, 1.0)
+  }
+
+  for (i in 1:n){
+    for (j in 1:p){
+      for (k in 1:K[j]){
+        eta[i, j, k] <- alpha[j]*(theta[i] - beta[j, k])
+        psum[i, j, k] <- sum(eta[i, j, 1:k])
+        exp.psum[i, j, k] <- exp(psum[i, j, k])
+        prob[i, j, k] <- exp.psum[i, j, k] / sum(exp.psum[i, j, 1:K[j]])
+      }
+    }
+  }
+
+  ## Priors for item parameters
+  for (j in 1:p){
+    alpha[j] ~ dnorm(m.alpha, pr.alpha) I(0, )
+    beta[j, 1] <- 0.0
+    for (k in 2:K[j]){
+      beta[j, k] ~ dnorm(m.beta, pr.beta)
+    }
+  }
+  pr.alpha <- pow(s.alpha, -2)
+  pr.beta <- pow(s.beta, -2)
+}

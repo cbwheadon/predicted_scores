@@ -1,0 +1,23 @@
+Supplementary material to the article
+
+  Dr C. Wheadon
+  Predicted score distributions under Item Response Theory models
+
+For the code to work correctly, the working directory in the R session
+must be changed (via the "setwd" function) to the base directory of
+the supplemental material (i.e., the directory that contains this
+README.txt file).
+
+The R library inline must be installed and working correctly for the C++ to compile on the fly 
+
+The files in the bugs directory are taken from Curtis, S.M. (2010) BUGS Code for Item Response Theory, 
+Journal of Statistical Software, Vol. 36, Code Snippet 1
+
+Below is a description of each file in the supplementary material.
+
+File                      Description
+----                      --------
+plot_function.R	Function to produce the graphical displays of the PPMC checks
+pfunctions.R	Various probability functions
+test_cpp.R		Inline C++ function for the Wingersky-Lord algorithm				
+wlord_pc.R		Example of the PPMC check under the partial credit model

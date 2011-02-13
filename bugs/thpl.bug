@@ -1,0 +1,20 @@
+model{
+  for (i in 1:n){
+    for (j in 1:p){
+      Y[i, j] ~ dbern(prob[i, j])
+      logit(prob.star[i, j]) <- alpha[j]*(theta[i] - delta[j])
+      prob[i, j] <- eta[j] + (1 - eta[j])*prob.star[i, j]
+    }
+    theta[i] ~ dnorm(0.0, 1.0)
+  }
+
+  ## Priors on item parameters
+  for (j in 1:p){
+    delta[j] ~ dnorm(m.delta, pr.delta)
+    alpha[j] ~ dnorm(m.alpha, pr.alpha) I(0, )
+    eta.star[j] ~ dbeta(a.eta, b.eta)
+    eta[j] <- guess.ind[j]*eta.star[j]
+  }
+  pr.delta <- pow(s.delta, -2)
+  pr.alpha <- pow(s.alpha, -2)
+}
