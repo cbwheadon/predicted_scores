@@ -11,7 +11,7 @@ source("wl_cpp.R")
 source("plot_function.R")
 
 #Change this to your bugs directory
-bugs.directory = "C:/Program Files/WinBUGS14"
+bugs.directory = "C:/Users/User/Winbugs/WinBUGS14"
 
 Ypath <- file.path(getwd(), "data/chem.csv")
 Y <- as.matrix(read.csv(file=Ypath,header=FALSE,nrows=200))
@@ -69,5 +69,5 @@ for (i in 1:n.sims){
 }
 
 close(pb)
-plotCondSumScoreDist(Y,scssd)
-plotQQ(Y,scssd)
+plotCondSumScoreDist(Y,scssd,"rasch")
+plotQQ(Y,scssd,"rasch")

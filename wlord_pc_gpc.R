@@ -13,7 +13,7 @@ source("pfunctions.R")
 require("plyr")
 
 #Change this to your bugs directory
-bugs.directory = "C:/Program Files/WinBUGS14"
+bugs.directory = "C:/Users/User/Winbugs/WinBUGS14"
 
 #Read in data file
 Ypath <- file.path(getwd(), "data/geog.dat")

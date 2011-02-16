@@ -79,5 +79,5 @@ for (i in 1:n.sims){
 }
 
 close(pb)
-plotCondSumScoreDist(Y,scssd)
-plotQQ(Y,scssd)
+plotCondSumScoreDist(Y,scssd,"3-pl")
+plotQQ(Y,scssd,"3-pl")

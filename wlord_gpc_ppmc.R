@@ -68,6 +68,7 @@ cats <- as.matrix(K)
 sim.scores <- vector("list", n.sims)
 max.scr <- sum(K-1)
 scssd <- matrix(0,nrow=max.scr+1,ncol=n.sims)
+pb <- txtProgressBar(min = 1, max = n.sims, style = 3)
 
 for(i in 1:n.sims){
 	v <- sims[i,]
@@ -105,12 +106,14 @@ for(i in 1:n.sims){
 
 	scssd[,i] <- rowSums(cssd)
 	sim.scores[[i]] <- matrix(sim.score,nrow=n,ncol=p,byrow=TRUE)
-	cat(round((i/n.sims)*100,0),"%","\n",sep="")
+	setTxtProgressBar(pb, i)
 }
 
+close(pb)
+
 #Score distributions
-plotCondSumScoreDist(Y,scssd)
-plotQQ(Y,scssd)
+plotCondSumScoreDist(Y,scssd,"gpcm")
+plotQQ(Y,scssd,"gpcm")
 
 #Plot PPMC checks
 ppmc_checks(sim.scores)
