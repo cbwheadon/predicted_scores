@@ -21,8 +21,8 @@ plotCondSumScoreDist<-function(itm.scres,cssd,nm){
 	ylim <- max(d$y)*2
 	
 	#save
-	#fn <- paste(paste(c(nm),sep="_"),".png",sep="")
-	#png(fn, height = 800, width = 600, res = 144)
+	fn <- paste(paste(c(nm),sep="_"),".pdf",sep="")
+	pdf(fn, height = 6, width = 4)
 	
 	plot(x=c(0,ttl+1),y=c(0,ylim), type="n",ylab="density",xlab="score")
 	
@@ -44,13 +44,13 @@ plotCondSumScoreDist<-function(itm.scres,cssd,nm){
 	lines(density(scres), col = 1, lwd = 2)
 	legend(x=0,y=ylim, legend=c(nm,"observed"), lty=1,col=c(lcols[1:i],1),lwd=2)
 	#end save
-	#dev.off()
+	dev.off()
 }
 
 plotQQ <- function(itm.scres,cssd,nm){
 	#save
-	#fn <- paste(paste("qq",c(nm),sep="_"),".png",sep="")
-	#png(fn, height = 800, width = 600, res = 144)
+	fn <- paste(paste("qq",c(nm),sep="_"),".pdf",sep="")
+	pdf(fn, height = 4, width = 4)
 	require(plyr)
 	#Q-Q Plot to compare up to 3 models and observed score distributions
 	if(typeof(cssd)=="double"){
@@ -77,5 +77,5 @@ plotQQ <- function(itm.scres,cssd,nm){
 	abline(a=0,b=1,lty=4)
 	legend(x=0,y=ttl, nm, pch=c(1:i),col=lcols[1:i])
 	#end save
-	#dev.off()
+	dev.off()
 }
