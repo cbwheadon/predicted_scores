@@ -79,7 +79,7 @@ for (i in 1:n.sims){
 		ps <- matrix(cbind(1-probs[s,],probs[s,]),ncol=2)
 		cond.sum.sc.d <- wLord(ps,cats)
 		if(s==1){
-			scssd[,1] <- cond.sum.sc.d
+			scssd[,i] <- cond.sum.sc.d
 		} else {
 			scssd[,i] <- scssd[,i] + cond.sum.sc.d
 		}
