@@ -49,6 +49,8 @@ plotCondSumScoreDist<-function(itm.scres,cssd,nm,fn){
 plotQQ <- function(itm.scres,cssd,nm,fn){
 			
 	#Q-Q Plot to compare models and observed score distributions
+
+	require(plyr)	
 	if(typeof(cssd)=="double"){
 		cssd <- list(cssd)
 		nm <- list(nm)

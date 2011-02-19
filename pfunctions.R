@@ -72,3 +72,29 @@ sum.prob <- function(sims,cts,cats,max.scr){
 	}
 	return(scssd)
 }
+
+chi_sq <- function(itm.scres,cssd,nm){
+
+	#Compare models and observed score distributions using chi-sq
+	if(typeof(cssd)=="double"){
+		cssd <- list(cssd)
+		nm <- list(nm)
+	}
+	ttl <- length(cssd[[1]][,1])-1
+	#observed candidates
+	cs <- length(itm.scres[,1])
+	#observed scores
+	#observed
+	scres <- rowSums(Y)
+	obs <- matrix(cbind(0:ttl,table(factor(scres, levels = 0:ttl))),ncol=2)
+	
+	mdls <- NULL
+	
+	#models
+	for (i in 1:length(cssd)){
+		mdn <- apply(cssd[[i]],1,median)
+		mdls[i] <- round(sum(((obs[,2]-mdn)^2)/mdn),3)
+	}
+	ps <- round(1-pchisq(mdls, ttl),3)
+	return(cbind(nm,mdls,ps))
+}
