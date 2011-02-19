@@ -8,7 +8,7 @@ library("R2WinBUGS")
 library("mcmcplots")
 library("inline")
 source("wl_cpp.R")
-source("plot_function.R")
+source("plot_gg.R")
 
 #Change this to your bugs directory
 bugs.directory = "C:/Users/User/Winbugs/WinBUGS14"
