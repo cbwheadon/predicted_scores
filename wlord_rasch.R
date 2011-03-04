@@ -6,7 +6,7 @@ setwd(file.path(getwd(), "/predicted_scores"))
 
 library("R2WinBUGS")
 library("mcmcplots")
-library("inline")
+library(inline)
 source("wl_cpp.R")
 source("plot_gg.R")
 

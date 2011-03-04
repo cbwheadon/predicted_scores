@@ -16,7 +16,7 @@ source("ppmc.R")
 source("functions.R")
 
 #Change this to your bugs directory
-bugs.directory = "C:/Program Files/WinBUGS14"
+bugs.directory = "C:/Users/User/Winbugs/WinBUGS14"
 
 Ypath <- file.path(getwd(), "data/geog.dat")
 Y <- as.matrix(read.fwf(file=Ypath,header=FALSE,w=rep(1,10)))
@@ -90,9 +90,9 @@ for(i in 1:n.sims){
 			ps[strt:ed]<-my.gpcm(as.numeric(pars[[k]]),theta[j],cts)
 
 			#Simulate score
-			pb <- runif(1)
+			prob <- runif(1)
 			thresh <- c(cumsum(ps[strt:ed]),1)
-			resp[k] <- min(which(thresh>=pb))-1
+			resp[k] <- min(which(thresh>=prob))-1
 
 		}
 

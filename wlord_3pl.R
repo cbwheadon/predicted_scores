@@ -1,4 +1,4 @@
-## Rasch Model
+## 3 parameter IRT Model
 rm(list=ls())
 
 #Make sure this is correct so the bugs syntax file is found
@@ -11,7 +11,7 @@ source("wl_cpp.R")
 source("plot_gg.R")
 
 #Change this to your bugs directory
-bugs.directory = "C:/Program Files/WinBUGS14"
+bugs.directory = "C:/Users/User/Winbugs/WinBUGS14"
 
 Ypath <- file.path(getwd(), "data/chem.csv")
 Y <- as.matrix(read.csv(file=Ypath,header=FALSE,nrows=200))
@@ -79,5 +79,5 @@ for (i in 1:n.sims){
 }
 
 close(pb)
-plotCondSumScoreDist(Y,scssd,"3-pl")
-plotQQ(Y,scssd,"3-pl")
+plotCondSumScoreDist(Y,scssd,"3pl")
+plotQQ(Y,scssd,"3pl")

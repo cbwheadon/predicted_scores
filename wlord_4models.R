@@ -1,4 +1,4 @@
-## Rasch Model
+## Comparison of 4 dichotomous models
 rm(list=ls())
 
 #Make sure this is correct so the bugs syntax file is found
@@ -9,7 +9,7 @@ library("mcmcplots")
 library("inline")
 source("wl_cpp.R")
 source("plot_gg.R")
-source("pfunctions")
+source("pfunctions.R")
 
 #Change this to your bugs directory
 bugs.directory = "C:/Users/User/Winbugs/WinBUGS14"
@@ -238,8 +238,8 @@ close(pb)
 
 tplt.scssd <- scssd
 
-plotCondSumScoreDist(Y,list(rasch.scssd,tpl.scssd,tplt.scssd,thpl.scssd),list("rasch","2pl","2plt","3pl"),"4models.pdf")
-plotQQ(Y,list(rasch.scssd,tpl.scssd,tplt.scssd,thpl.scssd),list("rasch","2pl","2plt","3pl"),"4modelsQQ.pdf")
+plotCondSumScoreDist(Y,list(rasch.scssd,tpl.scssd,tplt.scssd,thpl.scssd),list("rasch","2pl","2plt","3pl"))
+plotQQ(Y,list(rasch.scssd,tpl.scssd,tplt.scssd,thpl.scssd),list("rasch","2pl","2plt","3pl"))
 chi_sq(Y,list(rasch.scssd,tpl.scssd,tplt.scssd,thpl.scssd),list("rasch","2pl","2plt","3pl"))
 
-save.image(file = "mdls.RData")
+#save.image(file = "mdls.RData")

@@ -1,8 +1,10 @@
-plotCondSumScoreDist<-function(itm.scres,cssd,nm,fn){
-	
-	require(ggplot2)
+plotCondSumScoreDist<-function(itm.scres,cssd,nm){
 	
 	#Compare models and observed score distributions
+	require(ggplot2)
+
+	x11()
+
 	if(typeof(cssd)=="double"){
 		cssd <- list(cssd)
 		nm <- list(nm)
@@ -42,15 +44,20 @@ plotCondSumScoreDist<-function(itm.scres,cssd,nm,fn){
 	p <- p + scale_colour_manual(values = c(rep("black",3),"blue")) 
 	p <- p + scale_linetype_manual(values=c(rep(2,3),1)) 
 	
-	ggsave(file=fn)
+	#ggsave(file=fn)
+	print(p)
 
 }
 
-plotQQ <- function(itm.scres,cssd,nm,fn){
-			
-	#Q-Q Plot to compare models and observed score distributions
+plotQQ <- function(itm.scres,cssd,nm){
 
+	#Q-Q Plot to compare models and observed score distributions
+	
 	require(plyr)	
+	require(ggplot2)
+
+	x11() 
+
 	if(typeof(cssd)=="double"){
 		cssd <- list(cssd)
 		nm <- list(nm)
@@ -71,14 +78,17 @@ plotQQ <- function(itm.scres,cssd,nm,fn){
 	}
 	
 	mdls <- data.frame(mdls)
-	names(mdls) <- c("model","obs","modelled")
+	names(mdls) <- c("model","observed","modelled")
 	mdls$model <- factor(mdls$model,labels=nm)
 	
-	p <- ggplot(mdls,aes(x=obs,y=modelled))
-	p <- p + geom_jitter(alpha = 1/10) + geom_abline(intercept = 0, slope = 1)
+	p <- ggplot(mdls,aes(x=observed,y=modelled))
+	al <-  100/cs
+	if(al>1){al<-1}
+	p <- p + geom_jitter(alpha = al) + geom_abline(intercept = 0, slope = 1)
 	p <- p + facet_wrap(~ model)
 	
-	ggsave(file=fn)
+	#ggsave(file=fn)
+	print(p)
 }
 
 

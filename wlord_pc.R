@@ -13,7 +13,7 @@ source("pfunctions.R")
 require("plyr")
 
 #Change this to your bugs directory
-bugs.directory = "C:/Program Files/WinBUGS14"
+bugs.directory = "C:/Users/User/Winbugs/WinBUGS14"
 
 Ypath <- file.path(getwd(), "data/geog.dat")
 Y <- as.matrix(read.fwf(file=Ypath,header=FALSE,w=rep(1,10)))
@@ -61,5 +61,5 @@ max.scr <- sum(K-1)
 scssd <- sum.prob(sims,cts,cats,max.scr)
 
 #Score distributions
-plotCondSumScoreDist(Y,scssd)
-plotQQ(Y,scssd)
+plotCondSumScoreDist(Y,scssd,"pcm")
+plotQQ(Y,scssd,"pcm")

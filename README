@@ -17,7 +17,17 @@ Below is a description of each file in the supplementary material.
 
 File                      Description
 ----                      --------
-plot_function.R	Function to produce the graphical displays of the PPMC checks
-pfunctions.R	Various probability functions
-test_cpp.R		Inline C++ function for the Wingersky-Lord algorithm				
-wlord_pc.R		Example of the PPMC check under the partial credit model
+plot_gg			Functions to produce the graphical displays with ggplot2
+pfunctions.R		Various probability functions
+functions.R		Functions from Curtis, S.M. (2010)
+wl_cpp.R		Inline C++ function for the Wingersky-Lord algorithm				
+wlord_rasch.R		Rasch example
+wlord_pc.R		Partial Credit Model example
+wlord_2pl.R		2 parameter IRT model
+wlord_2plt.R		2 parameter testlet model
+wlord_gpc.R		Generalized Partial Credit Model
+wlord_3pl.R		3 parameter IRT model
+wlord_ppmc_pc.R		Partial Credit Model with PPMC
+wlord_ppmc_gpc.R	Generalized Partial Credit Model with PPMC
+wlord_pc_gpc.R		GPCM compared to PCM
+wlord_4models.R		Comparison of 4 dichotomous models with chi-square statistic
